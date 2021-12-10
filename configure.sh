@@ -252,8 +252,8 @@ generate_ansible_host_secrets() {
             printf "kind: Secret\n"
             printf "ansible_user: %s\n" "${!node_username}"
             printf "ansible_become_pass: %s\n" "${!node_password}"
-        } > "${PROJECT_DIR}/provision/ansible/inventory/host_vars/k8s-${node_id}.sops.yml"
-        sops --encrypt --in-place "${PROJECT_DIR}/provision/ansible/inventory/host_vars/k8s-${node_id}.sops.yml"
+        } > "${PROJECT_DIR}/provision/ansible/inventory/host_vars/${node_id}.sops.yml"
+        sops --encrypt --in-place "${PROJECT_DIR}/provision/ansible/inventory/host_vars/${node_id}.sops.yml"
     done
 }
 
