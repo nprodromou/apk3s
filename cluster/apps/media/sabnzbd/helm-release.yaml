@@ -30,15 +30,16 @@ spec:
         annotations:
           hajimari.io/enable: "true"
           hajimari.io/icon: "download-box"
+          cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        hosts:
-          - host: "sabnzbd.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
+        host:
+          name: "sabnzbd.${SECRET_DOMAIN}"
+          path: "/"
+          pathType: Prefix
         tls:
           - hosts:
-              - "sabnzbd.${SECRET_DOMAIN}"
+            - "sabnzbd.${SECRET_DOMAIN}"
+            secretname: sabnzbd
     podSecurityContext:
       runAsUser: "${SECRET_UID}"
       runAsGroup: "${SECRET_GID}"
