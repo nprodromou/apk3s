@@ -38,7 +38,7 @@ spec:
                 pathType: Prefix
         tls:
           - hosts:
-            - "sonarr.${SECRET_DOMAIN}"
+              - "sonarr.${SECRET_DOMAIN}"
             secretname: sonarr
     podSecurityContext:
       runAsUser: "${SECRET_UID}"

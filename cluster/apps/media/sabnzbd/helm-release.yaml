@@ -38,7 +38,7 @@ spec:
           pathType: Prefix
         tls:
           - hosts:
-            - "sabnzbd.${SECRET_DOMAIN}"
+              - "sabnzbd.${SECRET_DOMAIN}"
             secretname: sabnzbd
     podSecurityContext:
       runAsUser: "${SECRET_UID}"
