@@ -32,7 +32,7 @@ spec:
           pathType: Prefix
         tls:
           - hosts:
-            - "rook.${SECRET_DOMAIN}"
+              - "rook.${SECRET_DOMAIN}"
             secretName: rook
     cephClusterSpec:
       mon:
@@ -50,38 +50,38 @@ spec:
         nodes:
           - name: "aprp01"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp02"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp03"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp04"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp05"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp06"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp07"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp08"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp09"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp10"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp11"
             devices:
-            - name: "sda"
+              - name: "sda"
           - name: "aprp12"
             devices:
-            - name: "sda"
+              - name: "sda"
     cephObjectStores: []

@@ -13,15 +13,15 @@
 
     - name: Unlock Disks
       command: 'ls /dev/mapper/ceph-* | xargs -I% -- dmsetup remove %'
-      ignore_errors: yes
+      ignore_errors: true
 
     - name: Remove /dev/ceph-*
       command: 'rm -rf /dev/ceph-*'
-      ignore_errors: yes
+      ignore_errors: true
 
     - name: Remove /dev/mapper/ceph-*
       command: 'rm -rf /dev/mapper/ceph-*'
-      ignore_errors: yes
+      ignore_errors: true
 
 
 - hosts:
@@ -38,11 +38,11 @@
   tasks:
     - name: Zap All Instances of "{{ disk }}"
       command: 'sgdisk --zap-all "{{ disk }}"'
-      ignore_errors: yes
+      ignore_errors: true
 
     - name: Clean hdds with dd
       command: 'dd if=/dev/zero of="{{ disk }}" bs=1M count=100 oflag=direct,dsync'
-      ignore_errors: yes
+      ignore_errors: true
 
     - name: Remove lxd
       snap:
@@ -51,8 +51,8 @@
 
     # - name: Clean disks such as ssd with blkdiscard instead of dd
     #   command: 'blkdiscard "{{ disk }}"'
-    #   ignore_errors: yes
+    #   ignore_errors: true
 
     - name: Inform the OS of partition table changes
       command: 'partprobe "{{ disk }}"'
-      ignore_errors: yes
+      ignore_errors: true
