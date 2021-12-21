@@ -56,3 +56,7 @@
     - name: Inform the OS of partition table changes
       command: 'partprobe "{{ disk }}"'
       ignore_errors: true
+    
+    - name: Reboot
+      reboot:
+        reboot_timeout: 3600
