@@ -40,7 +40,7 @@ spec:
         tls:
         - hosts:
           - "sabnzbd.${SECRET_DOMAIN}"
-        secretName: sabnzbd
+          secretName: sabnzbd
     podSecurityContext:
       runAsUser: "${SECRET_UID}"
       runAsGroup: "${SECRET_GID}"
