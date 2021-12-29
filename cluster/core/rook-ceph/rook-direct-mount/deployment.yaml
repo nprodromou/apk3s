@@ -70,12 +70,12 @@ spec:
               - key: data
                 path: mon-endpoints
         - name: nas-data
-          nfs:
-            server: "${NAS_ADDR}"
-            path: /Shares/Files/
-        - name: direct-mount-scripts
-          projected:
-            defaultMode: 0775
-            sources:
-              - configMap:
-                  name: direct-mount-scripts
+        #   nfs:
+        #     server: "${NAS_ADDR}"
+        #     path: /Shares/Files/
+        # - name: direct-mount-scripts
+        #   projected:
+        #     defaultMode: 0775
+        #     sources:
+        #       - configMap:
+        #           name: direct-mount-scripts
