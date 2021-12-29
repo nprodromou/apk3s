@@ -2,15 +2,15 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: sonarr
+  name: radarr
   namespace: media
 spec:
   interval: 5m
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: sonarr
-      version: 15.1.0
+      chart: radarr
+      version: 15.1.1
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -18,34 +18,33 @@ spec:
       interval: 5m
   values:
     image:
-      repository: ghcr.io/k8s-at-home/sonarr
-      tag: v3.0.6.1342
+      repository: ghcr.io/k8s-at-home/radarr
+      tag: v3.2.2.5080
     env:
-      TZ: "America/Los_Angeles"
+      TZ: America/Los_Angeles"
     ingress:
       main:
         enabled: true
         ingressClassName: "traefik"
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
           hajimari.io/enable: "true"
-          hajimari.io/icon: "television-box"
+          hajimari.io/icon: "movie-box"
+          cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-          - host: "sonarr.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
+        - host: "radarr.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
         tls:
-          - hosts:
-            - "sonarr.${SECRET_DOMAIN}"
-            secretName: sonarr
+        - hosts:
+          - "radarr.${SECRET_DOMAIN}"
+          secretName: radarr
     podSecurityContext:
       runAsUser: "${SECRET_UID}"
       runAsGroup: "${SECRET_GID}"
       supplementalGroups:
         - 100
-
     # metrics:
     #   enabled: true
     #   serviceMonitor:
@@ -56,7 +55,7 @@ spec:
     #   exporter:
     #     image:
     #       repository: ghcr.io/onedr0p/exportarr
-    #       tag: v0.6.1
+    #       tag: v0.6.2
     #     env:
     #       port: 9794
     #       additionalMetrics: true
@@ -64,7 +63,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: sonarr-config-v1
+        existingClaim: radarr-config-v1
       media:
         enabled: true
         type: custom
@@ -72,25 +71,10 @@ spec:
           nfs:
             server: "${NAS_ADDR}"
             path: /Shares/Files/
-          mountPath: /Files/
-    # podAnnotations:
-    #   backup.velero.io/backup-volumes: config
-    #   pre.hook.backup.velero.io/container: fsfreeze
-    #   pre.hook.backup.velero.io/command: '["/sbin/fsfreeze", "--freeze", "/config"]'
-    #   post.hook.backup.velero.io/container: fsfreeze
-    #   post.hook.backup.velero.io/command: '["/sbin/fsfreeze", "--unfreeze", "/config"]'
+        mountPath: /Files
     resources:
       requests:
         memory: 250Mi
         cpu: 500m
       limits:
         memory: 1500Mi
-    # additionalContainers:
-    #   fsfreeze:
-    #     name: fsfreeze
-    #     image: ghcr.io/k8s-at-home/fsfreeze:v2.37-r0
-    #     volumeMounts:
-    #       - name: config
-    #         mountPath: /config
-    #     securityContext:
-    #       privileged: true
