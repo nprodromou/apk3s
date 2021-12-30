@@ -8,7 +8,7 @@ resources:
   - lidarr
   # - overseerr
   # - plex
-  # - prowlarr
+  - prowlarr
   # - qbittorrent
   # - qbittorrent-vpn
   - radarr
