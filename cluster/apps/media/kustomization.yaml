@@ -13,7 +13,7 @@ resources:
   # - qbittorrent-vpn
   - radarr
   # - radarr-uhd
-  # - readarr
+  - readarr
   - sabnzbd
   - sonarr
   # - sonarr-uhd
