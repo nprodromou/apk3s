@@ -18,3 +18,22 @@
       register: apt_upgrade
       retries: 5
       until: apt_upgrade is success
+
+- hosts:
+    - rpi
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  tasks:
+    - name: Install rpi-eeprom
+      apt:
+        name: rpi-eeprom
+        state: latest
+    - name: Check reboot
+      command: rpi-eeprom-update -a
+      register: update_check
+    - name: Do Reboot
+      reboot:
+      when: "'update required' in update_check.stdout"
+
+      
