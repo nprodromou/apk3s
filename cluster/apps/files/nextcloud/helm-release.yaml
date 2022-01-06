@@ -24,9 +24,7 @@ spec:
       TZ: "America/Los_Angeles"
     service:
       type: LoadBalancer
-      externalIPs:
-        - "${LB_NEXTCLOUD_IP}"
-      externalTrafficPolicy: Local
+      loadbalancerIP: "${LB_NEXTCLOUD_IP}"
     ingress:
       enabled: true
       ingressClassName: "traefik"
