@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: nextcloud
-      version: 2.11.3
+      version: nextcloud-2.11.3
       sourceRef:
         kind: HelmRepository
         name: nextcloud-charts
