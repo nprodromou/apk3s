@@ -23,29 +23,27 @@ spec:
     env:
       TZ: "America/Los_Angeles"
     service:
-      main:
-        type: LoadBalancer
-        externalIPs:
-          - "${LB_NEXTCLOUD_IP}"
-        externalTrafficPolicy: Local
+      type: LoadBalancer
+      externalIPs:
+        - "${LB_NEXTCLOUD_IP}"
+      externalTrafficPolicy: Local
     ingress:
-      main:
-        enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          # hajimari.io/enable: "true"
-          # hajimari.io/icon: "download-box"
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        hosts:
-        - host: "nextcloud.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
-        tls:
-        - hosts:
-          - "nextcloud.${SECRET_DOMAIN}"
-          secretName: nextcloud
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        # hajimari.io/enable: "true"
+        # hajimari.io/icon: "download-box"
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+      hosts:
+      - host: "nextcloud.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - "nextcloud.${SECRET_DOMAIN}"
+        secretName: nextcloud
     nextcloud:
       host: "nextcloud.${SECRET_DOMAIN}"
       # username: "${SECRET_NEXTCLOUD_USERNAME}"
