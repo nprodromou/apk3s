@@ -57,7 +57,6 @@ spec:
           host: "nextcloud.${SECRET_DOMAIN}"
           secure: ssl
           authtype: LOGIN
-      # strategy: Recreate      
     podSecurityContext:
       runAsUser: "${SECRET_UID}"
       runAsGroup: "${SECRET_GID}"
