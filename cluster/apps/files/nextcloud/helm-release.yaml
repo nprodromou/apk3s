@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      renovate: registryUrl=https://nextcloud.github.io/helm/
+      # renovate: registryUrl=https://nextcloud.github.io/helm/
       chart: nextcloud
       version: 2.11.3
       sourceRef:
@@ -17,9 +17,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    image:
-      repository: nextcloud.github.io/helm/nextcloud
-      tag: 2.11.3
+    # image:
+    #   repository: nextcloud.github.io/helm/nextcloud
+    #   tag: 2.11.3
     env:
       TZ: "America/Los_Angeles"
     service:
