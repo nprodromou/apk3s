@@ -86,7 +86,7 @@ spec:
         memory: 1000Mi
       limits:
         gpu.intel.com/i915: 1
-        memory: 8000Mi
+        memory: 16000Mi
     # addons:
     #   promtail:
     #     enabled: true
