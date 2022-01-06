@@ -48,7 +48,7 @@ spec:
           secretName: nextcloud
     nextcloud:
       host: "nextcloud.${SECRET_DOMAIN}"
-      username: "${SECRET_NEXTCLOUD_USERNAME}"
+      # username: "${SECRET_NEXTCLOUD_USERNAME}"
       password: "${SECRET_NEXTCLOUD_PASSWORD}"
       mail:
         enabled: true
