@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     image:
-      repository: nextcloud
+      repository: nextcloud/nextcloud
       tag: 2.11.3
     env:
       TZ: "America/Los_Angeles"
