@@ -64,10 +64,8 @@ spec:
       size: 10Gi
       nextcloudData:
         enabled: true
-        storageClass: rook-ceph-block
         existingClaim: nextcloud-data-v1
-        accessMode: ReadWriteMany
-        size: 1000Gi
+
       media:
         enabled: true
         type: custom
