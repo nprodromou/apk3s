@@ -8,8 +8,8 @@ metadata:
     kasten.io/backup-volume: "enabled"
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 10Gi
+      storage: 1000Gi
   storageClassName: rook-ceph-block
