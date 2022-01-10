@@ -182,13 +182,14 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-production
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-          - "prometheus.${SECRET_PUBLIC_DOMAIN}"
+          - "prometheus.${SECRET_DOMAIN}"
         paths:
         - path: /
           pathType: Prefix
         tls:
-          - hosts:
-              - "prometheus.${SECRET_PUBLIC_DOMAIN}"
+        - hosts:
+          - "prometheus.${SECRET_DOMAIN}"
+          secretName: prometheus
       thanosService:
         enabled: true
       thanosServiceMonitor:
