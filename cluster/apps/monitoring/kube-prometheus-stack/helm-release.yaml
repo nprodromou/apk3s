@@ -76,10 +76,10 @@ spec:
         pathType: Prefix
         ingressClassName: "traefik"
         hosts:
-          - "alert-manager.${SECRET_PUBLIC_DOMAIN}"
+          - "alert-manager.${SECRET_DOMAIN}"
         tls:
           - hosts:
-              - "alert-manager.${SECRET_PUBLIC_DOMAIN}"
+              - "alert-manager.${SECRET_DOMAIN}"
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
