@@ -73,7 +73,6 @@ spec:
             equal: ["alertname", "namespace"]
       ingress:
         enabled: true
-        pathType: Prefix
         ingressClassName: "traefik"
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
@@ -183,7 +182,6 @@ spec:
     prometheus:
       ingress:
         enabled: true
-        pathType: Prefix
         ingressClassName: "traefik"
         annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
