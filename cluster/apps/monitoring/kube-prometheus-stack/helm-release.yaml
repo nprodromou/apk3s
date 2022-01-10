@@ -84,9 +84,9 @@ spec:
         - path: /
           pathType: Prefix
         tls:
-          - hosts:
-            - "alert-manager.${SECRET_DOMAIN}"
-            secretName: alert-manager
+        - hosts:
+          - "alert-manager.${SECRET_DOMAIN}"
+          secretName: alert-manager
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
