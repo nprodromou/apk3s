@@ -75,11 +75,18 @@ spec:
         enabled: true
         pathType: Prefix
         ingressClassName: "traefik"
+        annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-          - "alert-manager.${SECRET_DOMAIN}"
+        - "alert-manager.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
         tls:
           - hosts:
-              - "alert-manager.${SECRET_DOMAIN}"
+            - "alert-manager.${SECRET_DOMAIN}"
+            secretName: alert-manager
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
