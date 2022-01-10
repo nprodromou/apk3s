@@ -84,7 +84,7 @@ spec:
           pathType: Prefix
         tls:
         - hosts:
-          - "alert-manager.${SECRET_DOMAIN}"
+            - "alert-manager.${SECRET_DOMAIN}"
           secretName: alert-manager
       alertmanagerSpec:
         storage:
@@ -193,7 +193,7 @@ spec:
           pathType: Prefix
         tls:
         - hosts:
-          - "prometheus.${SECRET_DOMAIN}"
+            - "prometheus.${SECRET_DOMAIN}"
           secretName: prometheus
       thanosService:
         enabled: true
