@@ -6,6 +6,6 @@ resources:
   # - files
   - kube-system
   - media
-  - monitoring
+  # - monitoring
   - networking
   - system-upgrade
