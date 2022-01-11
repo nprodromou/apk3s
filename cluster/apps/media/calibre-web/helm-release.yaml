@@ -22,13 +22,10 @@ spec:
       tag: version-0.6.13
     env:
       TZ: "America/Los_Angeles"
+      PGUID: "${SECRET_UID}"
+      PGID: "${SECRET_GID}"
       DOCKER_MODS: "linuxserver/calibre-web:calibre|ghcr.io/gilbn/theme.park:calibre-web"
       TP_THEME: "dracula"
-    podSecurityContext:
-      runAsUser: "${SECRET_UID}"
-      runAsGroup: "${SECRET_GID}"
-      supplementalGroups:
-        - 100
     persistence:
       config:
         enabled: true
