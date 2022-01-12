@@ -18,8 +18,8 @@ spec:
       interval: 5m
   values:
     image:
-      repository: linuxserver/calibre
-      tag: v5.2.0
+      # repository: linuxserver/calibre
+      # tag: v5.2.0
     env:
       TZ: "America/Los_Angeles"
       PGUID: "${SECRET_UID}"
