@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     image:
-      repository: ghcr.io/linuxserver/calibre
+      repository: linuxserver/calibre
       tag: v5.21.0
     env:
       TZ: "America/Los_Angeles"
