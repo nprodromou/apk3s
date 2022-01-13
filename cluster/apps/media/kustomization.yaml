@@ -17,6 +17,6 @@ resources:
   # - radarr-uhd
   # - readarr
   # - sabnzbd
-  - sonarr
+  # - sonarr
   # - sonarr-uhd
   # - tautulli
