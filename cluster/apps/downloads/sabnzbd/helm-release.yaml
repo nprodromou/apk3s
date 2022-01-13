@@ -22,7 +22,7 @@ spec:
       tag: v3.4.1
     env:
       TZ: "America/Los_Angeles"
-      HOST_WHITELIST_ENTRIES: "sabnzbd2.${SECRET_DOMAIN}, sabnzbd.${SECRET_DOMAIN}, sabnzbd"
+      HOST_WHITELIST_ENTRIES: "sabnzbd.${SECRET_DOMAIN}, sabnzbd"
     ingress:
       main:
         enabled: true
@@ -33,14 +33,14 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
-        - host: "sabnzbd2.${SECRET_DOMAIN}"
+        - host: "sabnzbd.${SECRET_DOMAIN}"
           paths:
           - path: /
             pathType: Prefix
         tls:
         - hosts:
-          - "sabnzbd2.${SECRET_DOMAIN}"
-          secretName: sabnzbd2
+          - "sabnzbd.${SECRET_DOMAIN}"
+          secretName: sabnzbd
     podSecurityContext:
       runAsUser: "${SECRET_UID}"
       runAsGroup: "${SECRET_GID}"
