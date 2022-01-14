@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - default
   - downloads
-  # - files
+  - files
   - kube-system
   - media
   - monitoring
