@@ -68,13 +68,13 @@ spec:
                   protocol: UDP
             - to:
                 - namespaceSelector: {}
-    DNS: 172.16.50.1
+    DNS: 172.16.0.1
     routed_namespaces:
       - downloads
     settings:
       VPN_INTERFACE: wg0
-      VXLAN_ID: 43
-      VXLAN_IP_NETWORK: 172.16.50
+      VXLAN_ID: 42
+      VXLAN_IP_NETWORK: 172.16.0
       VPN_BLOCK_OTHER_TRAFFIC: true
       VPN_TRAFFIC_PORT: "${SECRET_VPN_GATEWAY_PORT}"
       NOT_ROUTED_TO_GATEWAY_CIDRS: "${NETWORK_MANAGEMENT_CIDR}"
