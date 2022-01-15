@@ -68,15 +68,15 @@ spec:
         existingClaim: nextcloud-data-v1
         # accessMode: ReadWriteMany
         # size: 1000Gi
-      media:
-        enabled: true
-        type: custom
-        volumeSpec:
-          nfs:
-            server: "${NAS_ADDR}"
-            path: /Shares/Files/
+    extraVolumes:
+      - name: nfs-files
+        nfs:
+          server: "${NAS_ADDR}"
+          path: /Shares/Files/
+          readOnly: true
+    extraVolumeMounts:
+      - name: nfs-files
         mountPath: /Files
-        readOnly: true
     # affinity:
     #   nodeAffinity:
     #     requiredDuringSchedulingIgnoredDuringExecution:
