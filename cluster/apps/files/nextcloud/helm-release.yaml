@@ -53,6 +53,15 @@ spec:
           host: "nextcloud.${SECRET_DOMAIN}"
           secure: ssl
           authtype: LOGIN
+      extraVolumes:
+        - name: nfs-files
+          nfs:
+            server: "${NAS_ADDR}"
+            path: /Shares/Files/
+            readOnly: true
+      extraVolumeMounts:
+        - name: nfs-files
+          mountPath: /mnt/Files
     podSecurityContext:
       runAsUser: "${SECRET_UID}"
       runAsGroup: "${SECRET_GID}"
@@ -68,15 +77,6 @@ spec:
         existingClaim: nextcloud-data-v1
         # accessMode: ReadWriteMany
         # size: 1000Gi
-    extraVolumes:
-      - name: nfs-files
-        nfs:
-          server: "${NAS_ADDR}"
-          path: /Shares/Files/
-          readOnly: true
-    extraVolumeMounts:
-      - name: nfs-files
-        mountPath: /mnt/Files
     # affinity:
     #   nodeAffinity:
     #     requiredDuringSchedulingIgnoredDuringExecution:
