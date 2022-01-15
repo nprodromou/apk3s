@@ -76,7 +76,7 @@ spec:
           readOnly: true
     extraVolumeMounts:
       - name: nfs-files
-        mountPath: /Files
+        mountPath: /mnt/Files
     # affinity:
     #   nodeAffinity:
     #     requiredDuringSchedulingIgnoredDuringExecution:
