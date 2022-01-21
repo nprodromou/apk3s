@@ -55,6 +55,7 @@ spec:
       tls:
       - hosts:
         - "id.${SECRET_DOMAIN}"
+        secretName: id
     postgresql:
       enabled: true
       postgresqlPassword: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"
