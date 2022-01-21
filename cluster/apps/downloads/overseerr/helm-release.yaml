@@ -32,6 +32,7 @@ spec:
           hajimari.io/icon: "eye-circle"
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-rfc1918@kubernetescrd"
         hosts:
         - host: "overseerr.${SECRET_DOMAIN}"
           paths:

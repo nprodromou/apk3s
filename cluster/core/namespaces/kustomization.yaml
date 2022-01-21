@@ -10,5 +10,6 @@ resources:
   - monitoring.yaml
   - networking.yaml
   - rook-ceph.yaml
+  - security.yaml
   - vpn-gateway.yaml
 
