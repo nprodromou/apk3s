@@ -50,7 +50,7 @@ spec:
         enabled: true
         domain: "${SECRET_DOMAIN}"
         smtp:
-          host: "nextcloud.${SECRET_DOMAIN}"
+          host: "smtp.sendgrid.net"
           secure: ssl
           authtype: LOGIN
       extraVolumes:
