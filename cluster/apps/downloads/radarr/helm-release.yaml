@@ -31,7 +31,7 @@ spec:
           hajimari.io/icon: "movie-box"
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: "external-auth"
+          # traefik.ingress.kubernetes.io/router.middlewares: "external-auth"
         hosts:
         - host: "radarr.${SECRET_DOMAIN}"
           paths:
