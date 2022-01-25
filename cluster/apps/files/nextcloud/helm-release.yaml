@@ -63,8 +63,8 @@ spec:
         - name: nfs-files
           mountPath: /mnt/Files
       extraEnv:
-        - overwriteprotocol: https
-        - overwrite.cli.url: "nextcloud.${SECRET_DOMAIN}"
+        overwriteprotocol: https
+        overwrite.cli.url: "nextcloud.${SECRET_DOMAIN}"
     podSecurityContext:
       runAsUser: "${SECRET_UID}"
       runAsGroup: "${SECRET_GID}"
