@@ -33,7 +33,7 @@ spec:
         # hajimari.io/icon: "download-box"
         cert-manager.io/cluster-issuer: letsencrypt-production
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        traefik.ingress.kubernetes.io/router.middlewares: "networking-coudflare@kubernetescrd"
+        traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare@kubernetescrd"
       hosts:
       - host: "nextcloud.${SECRET_DOMAIN}"
         paths:
