@@ -1,7 +1,7 @@
 ---
 - hosts:
-    - master
-    - worker
+    # - master
+    # - worker
   become: true
   gather_facts: true
   any_errors_fatal: true
@@ -25,7 +25,7 @@
 
 
 - hosts:
-    - ceph
+    # - ceph
   become: true
   gather_facts: true
   any_errors_fatal: true
