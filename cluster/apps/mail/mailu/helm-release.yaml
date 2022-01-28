@@ -56,10 +56,10 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-production
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
-        - "mail.${SECRET_DOMAIN}"
-      paths:
-        - path: /
-          pathType: Prefix
+        - host: "mail.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
       tls:
         - hosts:
           - "mail.${SECRET_DOMAIN}"
