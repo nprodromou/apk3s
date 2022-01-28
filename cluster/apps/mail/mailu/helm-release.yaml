@@ -34,7 +34,20 @@ spec:
       username: postmaster
       password: "${SECRET_MAILU_POSTMASTER_PASSWORD}"
     secretKey: "${SECRET_MAILU_SECRET_KEY}"
-    subnet: "${NETWORK_K8S_CLUSTER_CIDR}"
+    subnet: "${NETWORK_MANAGEMENT_CIDR}"
+    mail:
+      messageSizeLimitInMegabytes: "100"
+    database:
+      type: mysql
+      roundcubeType: mysql
+      mysql:
+        database: mail
+        user: mail
+        password: "${SECRET_MAILU_MYSQL_PASSWORD}"
+        roundcubeDatabase: roundcube
+        roudcubeUser: roundcube
+        roundcubePassword: "${SECRET_MAILU_ROUNDCUBE_MYSQL_PASSWORD}"
+
     # logLevel: DEBUG
     ingress:
       annotations:
@@ -46,11 +59,15 @@ spec:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
         - "mail.${SECRET_DOMAIN}"
+      paths:
+        - path: /
+          pathType: Prefix
       tls:
         hosts:
           - "mail.${SECRET_DOMAIN}"
+        secretName: mail
     persistence:
-      existingClaim: mailu-data-pvc
+      existingClaim: mailu-data-v1
     roundcube:
       resources:
         requests:
