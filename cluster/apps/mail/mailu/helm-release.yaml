@@ -17,10 +17,10 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    admin:
-      podAnnotations:
-        backup-volumes: "data"
-        velero-backup: "true"
+    # admin:
+    #   podAnnotations:
+    #     backup-volumes: "data"
+    #     velero-backup: "true"
     certmanager:
       issuerName: letsencrypt-production
     domain: "${SECRET_DOMAIN}"
@@ -63,7 +63,7 @@ spec:
       tls:
         hosts:
           - "mail.${SECRET_DOMAIN}"
-        # secretName: mail
+        secretName: mail
     persistence:
       existingClaim: mailu-data-v1
     roundcube:
