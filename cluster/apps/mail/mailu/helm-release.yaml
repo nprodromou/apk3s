@@ -63,7 +63,7 @@ spec:
       tls:
         hosts:
           - "mail.${SECRET_DOMAIN}"
-        secretName: mail
+        # secretName: mail
     persistence:
       existingClaim: mailu-data-v1
     roundcube:
