@@ -45,9 +45,8 @@ spec:
         user: mail
         password: "${SECRET_MAILU_MYSQL_PASSWORD}"
         roundcubeDatabase: roundcube
-        roudcubeUser: roundcube
+        roundcubeUser: roundcube
         roundcubePassword: "${SECRET_MAILU_ROUNDCUBE_MYSQL_PASSWORD}"
-
     # logLevel: DEBUG
     ingress:
       annotations:
