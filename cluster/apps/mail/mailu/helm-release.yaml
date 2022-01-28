@@ -29,6 +29,7 @@ spec:
       - "smtp.${SECRET_DOMAIN}"
       - "imap.${SECRET_DOMAIN}"
       - "mail.${SECRET_DOMAIN}"
+    secretName: mailu
     initialAccount:
       domain: "${SECRET_DOMAIN}"
       username: postmaster
