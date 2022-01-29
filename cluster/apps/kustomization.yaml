@@ -6,7 +6,7 @@ resources:
   - downloads
   - files
   - kube-system
-  - mail
+  # - mail
   - media
   - monitoring
   - networking
