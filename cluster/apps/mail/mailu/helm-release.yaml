@@ -23,13 +23,13 @@ spec:
     #     velero-backup: "true"
     certmanager:
       issuerName: letsencrypt-production
+      secretName: mailu
     domain: "${SECRET_DOMAIN}"
     hostnames:
       - "rn-00.${SECRET_DOMAIN}"
       - "smtp.${SECRET_DOMAIN}"
       - "imap.${SECRET_DOMAIN}"
       - "mail.${SECRET_DOMAIN}"
-    secretName: mailu
     initialAccount:
       domain: "${SECRET_DOMAIN}"
       username: postmaster
