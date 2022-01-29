@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       # renovate: registryUrl=https://charts.rook.io/release
-      chart: rook-ceph-cluster
+      chart: rook-ceph
       version: v1.8.1
       sourceRef:
         kind: HelmRepository
