@@ -23,7 +23,6 @@ spec:
     #     velero-backup: "true"
     certmanager:
       issuerName: letsencrypt-production
-      secretName: mailu
     domain: "${SECRET_DOMAIN}"
     hostnames:
       - "rn-00.${SECRET_DOMAIN}"
@@ -58,13 +57,9 @@ spec:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
       hosts:
         - host: "mail.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
       tls:
         hosts:
           - "mail.${SECRET_DOMAIN}"
-        secretName: mail
     persistence:
       existingClaim: mailu-data-v1
     roundcube:
