@@ -5,7 +5,7 @@ resources:
   - cert-manager.yaml
   - downloads.yaml
   - files.yaml
-  - mail.yaml
+  # - mail.yaml
   - media.yaml
   - metallb-system.yaml
   - monitoring.yaml
