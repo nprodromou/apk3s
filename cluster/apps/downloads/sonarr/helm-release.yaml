@@ -33,7 +33,7 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           # traefik.ingress.kubernetes.io/router.middlewares: "networking-rfc1918@kubernetescrd"
           # traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare@kubernetescrd"
-          traefik.ingress.kubernetes.io/router.middlewares: "networking-security-ak-outpost-sonarr@kubernetescrd"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-external-auth@kubernetescrd"
         hosts:
         - host: "sonarr.${SECRET_DOMAIN}"
           paths:
