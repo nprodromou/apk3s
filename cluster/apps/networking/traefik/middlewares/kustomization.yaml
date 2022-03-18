@@ -7,6 +7,6 @@ resources:
 - internal-auth.yaml
 - rfc1918.yaml
 - redirect-path.yaml
-- security-ak-outpost-sonarr.yaml
+# - security-ak-outpost-sonarr.yaml
 - secret.sops.yaml
 - basic-auth.yaml
