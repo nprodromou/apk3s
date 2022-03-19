@@ -48,7 +48,7 @@ spec:
       runAsGroup: "${SECRET_GID}"
       supplementalGroups:
         - 100
-    # metrics:
+    # metrics:4
     #   enabled: true
     #   serviceMonitor:
     #     interval: 3m
