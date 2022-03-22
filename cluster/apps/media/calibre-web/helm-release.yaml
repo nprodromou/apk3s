@@ -58,7 +58,7 @@ spec:
           secretName: books
     resources:
       requests:
-        memory: 256Mi
+        memory: 1024Mi
     probes:
       startup:
         spec:
