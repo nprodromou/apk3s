@@ -10,6 +10,6 @@ resources:
   - media
   - monitoring
   - networking
-  # - security
+  - security
   - system-upgrade
   - vpn-gateway
