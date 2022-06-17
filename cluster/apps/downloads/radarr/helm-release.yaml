@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: radarr
-      version: 15.1.1
+      version: 16.2.3
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/k8s-at-home/radarr
-      tag: v3.2.2.5080
+      tag: v4.1.0.6175
     env:
       TZ: America/Los_Angeles"
     ingress:
