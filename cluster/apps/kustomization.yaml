@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - default
   - downloads
+  - games
   - files
   - kube-system
   - mail
