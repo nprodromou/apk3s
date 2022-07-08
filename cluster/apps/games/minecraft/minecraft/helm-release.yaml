@@ -15,56 +15,56 @@ spec:
         name: minecraft-server-charts
         namespace: flux-system
       interval: 5m
-    values:
-      image: itzg/minecraft-server
-      imageTag: latest
-      imagePullSecrets: []
-      resources:
-        requests:
-          memory: 6Gi
-          cpu: 400m
-        limits:
-          memory: 6Gi
-      env:
-        TZ: "America/Los_Angeles"
-      service:
-        type: LoadBalancer
-        loadBalancerIP: "${LB_MINECRAFT_IP}"
-      ingress:
+  values:
+    image: itzg/minecraft-server
+    imageTag: latest
+    imagePullSecrets: []
+    resources:
+      requests:
+        memory: 6Gi
+        cpu: 400m
+      limits:
+        memory: 6Gi
+    env:
+      TZ: "America/Los_Angeles"
+    service:
+      type: LoadBalancer
+      loadBalancerIP: "${LB_MINECRAFT_IP}"
+    ingress:
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        # hajimari.io/enable: "true"
+        # hajimari.io/icon: "download-box"
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        # traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare@kubernetescrd"
+      hosts:
+      - host: "minecraft.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - "minecraft.${SECRET_DOMAIN}"
+        secretName: minecraft
+    persistence:
+      enabled: true
+      existingClaim: minecraft-config-v1
+      storageClass: "rook-ceph-block"
+      dataDir:
         enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          # hajimari.io/enable: "true"
-          # hajimari.io/icon: "download-box"
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          # traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare@kubernetescrd"
-        hosts:
-        - host: "minecraft.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
-        tls:
-        - hosts:
-          - "minecraft.${SECRET_DOMAIN}"
-          secretName: minecraft
-      persistence:
-        enabled: true
-        existingClaim: minecraft-config-v1
-        storageClass: "rook-ceph-block"
-        dataDir:
-          enabled: true
-          Size: 10Gi
-      minecraftServer:
-        eula: "TRUE"
-        version: "LATEST"
-        type: "VANILLA"
-        # ftbModpackId: "35"
-        # ftbModpackVersionId: "3.4.0"
-        difficulty: easy
-        pvp: true
-        memory: 4096M
-        serviceType: LoadBalancer
-        motd: "Welcome to the Prodromou Minecraft Server!"
-        loadBalancerIP: "${LB_MINECRAFT_IP}"
-        externalTrafficPolicy: Local
+        Size: 10Gi
+    minecraftServer:
+      eula: "TRUE"
+      version: "LATEST"
+      type: "VANILLA"
+      # ftbModpackId: "35"
+      # ftbModpackVersionId: "3.4.0"
+      difficulty: easy
+      pvp: true
+      memory: 4096M
+      serviceType: LoadBalancer
+      motd: "Welcome to the Prodromou Minecraft Server!"
+      loadBalancerIP: "${LB_MINECRAFT_IP}"
+      externalTrafficPolicy: Local
