@@ -17,7 +17,7 @@ spec:
       interval: 5m
   values:
     image: itzg/minecraft-server
-    imageTag: java8
+    imageTag: latest
     imagePullSecrets: []
     resources:
       requests:
@@ -57,14 +57,14 @@ spec:
         Size: 10Gi
     minecraftServer:
       eula: "TRUE"
-      version: "1.12.2"
-      type: "FTBA"
-      ftbModpackId: "35"
-      ftbModpackVersionId: "3.4.0"
+      version: "LATEST"
+      type: "VANILLA"
+      # ftbModpackId: "35"
+      # ftbModpackVersionId: "3.4.0"
       difficulty: easy
       pvp: true
       memory: 4096M
       serviceType: LoadBalancer
-      motd: "\u00A7kSurvival"
+      motd: "Welcome to the Prodromou Minecraft Server!"
       loadBalancerIP: "${LB_MINECRAFT_IP}"
       externalTrafficPolicy: Local
