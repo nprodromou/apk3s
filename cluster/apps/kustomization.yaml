@@ -13,4 +13,5 @@ resources:
   - networking
   - security
   - system-upgrade
+  # - tools
   - vpn-gateway
