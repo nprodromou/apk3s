@@ -18,7 +18,7 @@ spec:
   values:
     image: itzg/minecraft-server
     imageTag: java8
-    pullSecret: []
+    imagePullSecrets: []
     resources:
       requests:
         memory: 6Gi
