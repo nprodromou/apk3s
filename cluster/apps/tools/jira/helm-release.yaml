@@ -1,0 +1,102 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: files
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://nextcloud.github.io/helm/
+      chart: nextcloud
+      version: 2.11.3
+      sourceRef:
+        kind: HelmRepository
+        name: nextcloud-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    # image:
+    #   repository: nextcloud.github.io/helm/nextcloud
+    #   tag: 2.11.3
+    env:
+      TZ: "America/Los_Angeles"
+    service:
+      type: LoadBalancer
+      loadBalancerIP: "${LB_NEXTCLOUD_IP}"
+    ingress:
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        hajimari.io/enable: "true"
+        hajimari.io/icon: "download-box"
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+        # traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare@kubernetescrd"
+      hosts:
+      - host: "nextcloud.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - "nextcloud.${SECRET_DOMAIN}"
+        secretName: nextcloud
+    nextcloud:
+      host: "nextcloud.${SECRET_DOMAIN}"
+      # username: "${SECRET_NEXTCLOUD_USERNAME}"
+      password: "${SECRET_NEXTCLOUD_PASSWORD}"
+      mail:
+        enabled: true
+        domain: "${SECRET_DOMAIN}"
+        smtp:
+          host: "smtp.sendgrid.net"
+          secure: ssl
+          authtype: LOGIN
+      extraVolumes:
+        - name: nfs-files
+          nfs:
+            server: "${NAS_ADDR}"
+            path: /Shares/Files/
+            readOnly: true
+      extraVolumeMounts:
+        - name: nfs-files
+          mountPath: /mnt/Files
+      extraEnv:
+        # overwriteprotocol: https
+        # overwrite.cli.url: "nextcloud.${SECRET_DOMAIN}"
+    podSecurityContext:
+      runAsUser: "${SECRET_UID}"
+      runAsGroup: "${SECRET_GID}"
+      supplementalGroups:
+        - 100
+    persistence:
+      enabled: true
+      existingClaim: nextcloud-config-v1
+      size: 10Gi
+      nextcloudData:
+        enabled: true
+        # storageClass: rook-ceph-block
+        existingClaim: nextcloud-data-v1
+        # accessMode: ReadWriteMany
+        # size: 1000Gi
+    # affinity:
+    #   nodeAffinity:
+    #     requiredDuringSchedulingIgnoredDuringExecution:
+    #       nodeSelectorTerms:
+    #         - matchExpressions:
+    #             - key: feature.node.kubernetes.io/custom-intel-gpu
+    #               operator: In
+    #               values:
+    #                 - "true"
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: "nextcloud-promtail"
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 1000Mi
+      limits:
+        memory: 8000Mi
+
+
