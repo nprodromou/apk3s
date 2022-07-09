@@ -67,4 +67,4 @@ spec:
       serviceType: LoadBalancer
       motd: "FTB:R"
       loadBalancerIP: "${LB_MINECRAFT_MOD_IP}"
-      externalTrafficPolicy: Local
+      externalTrafficPolicy: Cluster
