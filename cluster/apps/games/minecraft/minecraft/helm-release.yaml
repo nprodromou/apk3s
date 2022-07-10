@@ -22,7 +22,7 @@ spec:
     resources:
       requests:
         memory: 6Gi
-        cpu: 400m
+        cpu: 800m
       limits:
         memory: 6Gi
     env:
@@ -61,10 +61,12 @@ spec:
       type: "VANILLA"
       # ftbModpackId: "35"
       # ftbModpackVersionId: "3.4.0"
+      ops: "${SECRET_MINECRAFT_OPS}"
+      whitelist: "${SECRET_MINECRAFT_WHITELIST}"
       difficulty: easy
-      pvp: true
+      pvp: false
       memory: 4096M
       serviceType: LoadBalancer
-      motd: "Welcome to the Prodromou Minecraft Server!"
+      motd: "${SECRET_MINECRAFT_MOTD}"
       loadBalancerIP: "${LB_MINECRAFT_IP}"
       externalTrafficPolicy: Local
