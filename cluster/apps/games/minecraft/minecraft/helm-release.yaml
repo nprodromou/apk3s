@@ -70,10 +70,10 @@ spec:
       motd: "${SECRET_MINECRAFT_MOTD}"
       loadBalancerIP: "${LB_MINECRAFT_IP}"
       externalTrafficPolicy: Local
-      rcon:
-        enabled: true
-        port: 25575
-        password: "${SECRET_MINECRAFT_RCON_PASSWORD}"
-        serviceType: NodePort
+      # rcon:
+      #   enabled: true
+      #   port: 25575
+      #   password: "${SECRET_MINECRAFT_RCON_PASSWORD}"
+      #   serviceType: NodePort
         # loadBalancerIP: "${LB_MINECRAFT_RCON_IP}"
 
