@@ -75,5 +75,5 @@ spec:
         port: 25575
         password: "${SECRET_MINECRAFT_RCON_PASSWORD}"
         serviceType: loadBalancer
-        loadBalancerIP: "${LB_MINECRAFT_RCON_IP}"
+        # loadBalancerIP: "${LB_MINECRAFT_RCON_IP}"
 
